@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
-const fileupload = require("express-fileupload")
+// const fileupload = require("express-fileupload")
 const multer = require("multer");
 
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 
-const upload = multer({dest:"uploads/"})
+// const upload = multer({dest:"uploads/"})
 
 
 dotenv.config();
