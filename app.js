@@ -14,7 +14,7 @@ dotenv.config();
 app.use(require("cookie-parser")())
 //using middleware
 app.use(cors({
-    origin: "https://bright-hose.cyclic.app",
+    origin: "https://friendsmedia.netlify.app",
     credentials: true
 }))
 app.use(express.json({ limit: "50mb" }));
