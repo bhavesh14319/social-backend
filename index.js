@@ -1,31 +1,17 @@
-const express = require("express");
-const app = express();
-const dotenv = require("dotenv");
-const cors = require("cors");
-const fileupload = require("express-fileupload")
-const multer = require("multer");
+const app = require("./app")
+const connectDatabase = require("./config/database");
 
-const bodyParser = require("body-parser");
-
-const upload = multer({dest:"uploads/"})
+const cloudinary = require("cloudinary");
 
 
-dotenv.config();
-app.use(require("cookie-parser")())
-//using middleware
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-}))
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({limit:"50mb",extended:true }));
+connectDatabase();
 
-//import routes
-const userRoutes = require("./Routes/User");
-const postRoutes = require("./Routes/Post");
+cloudinary.config({
+    cloud_name: "dxx38ccfx",
+    api_key: "549216885663435",
+    api_secret: "DHSgyPTnPS59EawXBdgAXQ4J2Vw"
+  });
 
-
-app.use("/api/v1", userRoutes)
-app.use("/api/v1", postRoutes)
-
-module.exports = app;
+app.listen(process.env.PORT , ()=>{
+    console.log("server running on port ", process.env.PORT);
+})
